@@ -17,7 +17,7 @@ on:
         type: environment
         required: true
 
-          Test:
+        Test:
                 runs-on: ubuntu-latest
                 if: github.event_name == 'workflow_dispatch'
                 needs: Build
@@ -25,7 +25,7 @@ on:
                 steps:
                   - run: echo "🧪 Testing..."
 
-          Load-Test:
+        Load-Test:
             runs-on: ubuntu-latest
             if: github.event_name == 'workflow_dispatch'
             needs: Build
@@ -35,7 +35,7 @@ on:
                   echo "🧪 Testing..."
                   sleep 15
 
-          Production:
+        Production:
             runs-on: ubuntu-latest
             needs: [Test, Load-Test]
             environment:
